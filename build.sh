@@ -12,4 +12,5 @@ usage()
 
 set -xe && \
   git clone /repo /home/elixir/see_eye && \
-  docker build /home/elixir/see_eye/apps/${app}
+  cd /home/elixir/see_eye/apps/${app} && \
+  ./build.sh
