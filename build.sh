@@ -2,11 +2,14 @@
 
 app=${1}
 
-if [ -z ${app} ]; then
+usage()
+{
     echo "Usage: ${0} <app>"
-    exit 1
-fi
+    exit ${1}
+}
 
-git clone /repo ${app}
-cd ${app}
-ls
+[ ${#} = 1 ] || usage 1
+
+set -xe && \
+  git clone /repo /home/elixir/see_eye && \
+  docker build /home/elixir/see_eye/apps/${app}
